@@ -1,11 +1,9 @@
-import React from "react";
+import './styles.css';
 
-const App = () =>{
-    return (
-        <h1>
-            Hello world! I am using React
-        </h1>
-    )
-}
-
-export default App
+export const App = () => (
+    <>
+        <h1>hello</h1>
+        <>{process.env.name}</>
+        <>{process.env.NODE_ENV}</>
+    </>
+)
