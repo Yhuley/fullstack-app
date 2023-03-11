@@ -1,8 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+const babelLoader = {
+  loader: 'babel-loader',
+  options: {
+    cacheDirectory: true,
+  },
+};
+
 module.exports = {
-  entry: './index.js',
+  entry: './index.tsx',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -19,15 +26,24 @@ module.exports = {
     liveReload: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.tsx', '.ts', '.json'],
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, 
-        exclude: /node_modules/, 
-        use: 'babel-loader', 
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [
+          babelLoader,
+          {
+            loader: 'ts-loader',
+          },
+        ],
       },
+      {
+        test: /\.js(x?)$/,
+        use: [babelLoader],
+      }
     ],
   },
   plugins: [
