@@ -1,9 +1,9 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, '..', './src/index.tsx'),
+  entry: path.resolve(__dirname, '..', 'src', 'index.tsx'),
   resolve: {
     extensions: ['.js', '.tsx', '.ts'],
   },
@@ -33,15 +33,15 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, '..', './build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: 'source', to: 'dest' }],
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [{ from: 'source', to: 'dest' }],
+    // }),
   ],
 };
