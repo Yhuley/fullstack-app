@@ -8,7 +8,9 @@
   "license": "MIT",
   "scripts": {
     "start:client": "cd client && yarn start",
-    "build:client": "cd client && yarn build"
+    "build:client": "cd client && yarn build",
+    "lint": "eslint --fix \"./{client,server}/src/**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "prettier --write \"./{client,server}/src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "dependencies": {
     "typescript": "^4.9.5"
@@ -17,18 +19,26 @@
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
     "@types/node": "^18.15.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "prettier": "^2.8.4",
     "ts-node": "^10.9.1"
   },
   "lint-staged": {
-    "./{client,server}/**/*.{js,jsx,ts,tsx,json}": [
+    "./{client,server}/src/**/*.{js,jsx,ts,tsx,json}": [
       "eslint --fix"
     ],
-    "./{client,server}/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "./{client,server}/src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]
   },
