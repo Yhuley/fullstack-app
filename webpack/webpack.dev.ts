@@ -5,7 +5,32 @@ import Dotenv from 'dotenv-webpack';
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[local]-[contenthash:base64:5]',
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ],
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.name': `"development"`,

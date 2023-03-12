@@ -18,10 +18,6 @@ export const config = {
         ],
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
       },
@@ -32,9 +28,8 @@ export const config = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/',
+    path: path.resolve(__dirname, '..', 'dist'),
+    filename: path.join('.', 'js', '[name].[chunkhash].js'),
   },
   plugins: [
     new HtmlWebpackPlugin({
