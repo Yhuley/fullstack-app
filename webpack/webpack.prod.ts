@@ -1,6 +1,6 @@
-const webpack = require('webpack');
-const RefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+import webpack from 'webpack';
+import RefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 module.exports = {
   mode: 'production',

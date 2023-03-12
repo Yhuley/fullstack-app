@@ -1,7 +1,7 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+export const config = {
   entry: path.resolve(__dirname, '..', 'src', 'index.tsx'),
   resolve: {
     extensions: ['.js', '.tsx', '.ts'],
