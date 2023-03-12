@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const RefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -6,6 +7,7 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env.name': `"production"`
-        })
+        }),
+        new RefreshPlugin()
     ]
 }
