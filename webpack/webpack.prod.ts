@@ -1,6 +1,8 @@
 import webpack from 'webpack';
+import path from 'path';
 import RefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import Dotenv from 'dotenv-webpack';
 
 module.exports = {
   mode: 'production',
@@ -11,5 +13,8 @@ module.exports = {
     }),
     new RefreshPlugin(),
     new BundleAnalyzerPlugin(),
+    new Dotenv({
+      path: path.resolve(__dirname, '..', `.env.production`),
+    }),
   ],
 };

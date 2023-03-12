@@ -40,8 +40,5 @@ export const config = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './public/index.html'),
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [{ from: 'source', to: 'dest' }],
-    // }),
   ],
 };
