@@ -7,7 +7,6 @@ export const App = () => {
       <h1>hello</h1>
       <p>{process.env.name}</p>
       <>{process.env.NODE_ENV}</>
-      <>{process.env.PORT}</>
     </>
   );
 };
