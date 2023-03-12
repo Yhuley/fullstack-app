@@ -1,11 +1,8 @@
 module.exports = {
-  semi: false,
-  trailingComma: 'es5',
+  printWidth: 120,
   singleQuote: true,
-  printWidth: 80,
+  trailingComma: "all",
   tabWidth: 2,
   endOfLine: 'auto',
-  editor: {
-    formatOnSave: true
-  }
+  "editor.formatOnSave": true
 }
