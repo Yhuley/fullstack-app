@@ -1,5 +1,5 @@
 {
-  "name": "fullstack-app",
+  "name": "client",
   "version": "1.0.0",
   "main": "src/index.tsx",
   "repository": "https://github.com/Yhuley/fullstack-app.git",
