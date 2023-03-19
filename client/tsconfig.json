@@ -14,7 +14,13 @@
     "resolveJsonModule": true,
     "noImplicitAny": true,
     "outDir": "./build/",
-    "allowJs": true
+    "allowJs": true,
+    "baseUrl": "./src",
+    "paths": {
+      "ui/*": ["ui/*"],
+      "data/*": ["data/*"],
+      "app/*": ["app/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {

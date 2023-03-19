@@ -6,6 +6,10 @@
   "repository": "https://github.com/Yhuley/fullstack-app.git",
   "author": "Yhuley <yuriihuley@gmail.com>",
   "license": "MIT",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "start:client": "cd client && yarn start",
     "build:client": "cd client && yarn build",

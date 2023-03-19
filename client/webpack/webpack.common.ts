@@ -5,6 +5,11 @@ export const config = {
   entry: path.resolve(__dirname, '..', 'src', 'app', 'index.tsx'),
   resolve: {
     extensions: ['.js', '.tsx', '.ts'],
+    alias: {
+      ui: path.resolve(__dirname, '..', 'src', 'ui'),
+      data: path.resolve(__dirname, '..', 'src', 'data'),
+      app: path.resolve(__dirname, '..', 'src', 'app'),
+    },
   },
   module: {
     rules: [
