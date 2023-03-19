@@ -1,5 +1,5 @@
 import { Col, Row, Image, Input, Form, Button, Typography } from 'antd';
-import { profilePath, signUpPath } from 'app/utils';
+import { profilePath, registrationPath } from 'app/utils';
 import { useAppDispatch } from 'data';
 import { login as loginReducer } from 'data/reducers/auth.reducer';
 import { useState } from 'react';
@@ -54,7 +54,7 @@ const Login = () => {
               </Form.Item>
             </Form>
             <Text>
-              Do not have account? <Link to={signUpPath}>Register</Link>
+              Do not have account? <Link to={registrationPath}>Register</Link>
             </Text>
           </Col>
         </Row>
