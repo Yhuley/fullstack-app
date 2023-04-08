@@ -1,5 +1,5 @@
 import { Col, Row, Image, Input, Form, Button, Typography } from 'antd';
-import { profilePath, registrationPath } from 'app/utils';
+import { loginSchema, profilePath, registrationPath } from 'app/utils';
 import { useAppDispatch } from 'data';
 import { login as loginReducer } from 'data/reducers/auth.reducer';
 import { useState } from 'react';
@@ -7,11 +7,13 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type SignInValues = {
-  email: string;
-  password: string;
-};
+const yupSync = [
+  {
+    async validator({ field }: { field: string }, value: string) {
+      await loginSchema.validateSyncAt(field, { [field]: value });
+    },
+  },
+];
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,18 +32,10 @@ const Login = () => {
           <Col xs={20} md={12} lg={16}>
             <Title>Login</Title>
             <Form onFinish={login} layout="vertical" requiredMark={false} size="large">
-              <Form.Item
-                name="email"
-                label="Email"
-                rules={[{ required: true, message: 'Please input your email!', type: 'email' }]}
-              >
+              <Form.Item name="email" label="Email" rules={yupSync}>
                 <Input placeholder="Email" />
               </Form.Item>
-              <Form.Item
-                label="Password"
-                name="password"
-                rules={[{ required: true, message: 'Please input your Password!' }]}
-              >
+              <Form.Item label="Password" name="password" rules={yupSync}>
                 <Input.Password
                   visibilityToggle={{ visible: passwordVisible, onVisibleChange: setPasswordVisible }}
                   placeholder="Password"

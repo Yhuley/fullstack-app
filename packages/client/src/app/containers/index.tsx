@@ -3,6 +3,7 @@ import { getChildrenPaths } from 'app/utils';
 import Root from 'app/components/core/root';
 import ErrorPage from 'app/components/core/error-page';
 import { useAppSelector, selectors } from 'data';
+import { useEffect } from 'react';
 
 const App = () => {
   const isLoggedIn = useAppSelector(selectors.auth.getIsLoggedIn);
@@ -15,6 +16,10 @@ const App = () => {
       children: getChildrenPaths(isLoggedIn),
     },
   ]);
+
+  useEffect(() => {
+    fetch('http://localhost:4000');
+  }, []);
 
   return <RouterProvider router={router} />;
 };
