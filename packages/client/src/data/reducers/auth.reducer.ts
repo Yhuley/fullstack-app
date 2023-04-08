@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { IThunkType } from 'app/utils/types';
 
 export interface AuthState {
   isLoggedIn: boolean;
@@ -7,6 +8,11 @@ export interface AuthState {
 const initialState: AuthState = {
   isLoggedIn: false,
 };
+
+export const loginThunk = createAsyncThunk<null, any, IThunkType>('auth/login', async (values, { extra: { api } }) => {
+  api.get('/');
+  return null;
+});
 
 export const slice = createSlice({
   name: 'auth',
