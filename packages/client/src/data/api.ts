@@ -10,6 +10,14 @@ export class API {
     this.store = store;
   }
 
+  setAuthorizationHeader = (apiKey: string): void => {
+    this.axios.defaults.headers.common['x-auth'] = `${apiKey}`;
+  };
+
+  removeAuthorizationHeader = (): void => {
+    delete this.axios.defaults.headers.common['x-auth'];
+  };
+
   get = (...args) => this.axios.get.apply(this, args);
 
   post = (...args) => this.axios.post.apply(this, args);

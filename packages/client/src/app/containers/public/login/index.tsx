@@ -1,7 +1,10 @@
 import { Col, Row, Image, Input, Form, Button, Typography } from 'antd';
-import { loginSchema, profilePath, registrationPath } from 'app/utils';
+import { loginSchema, registrationPath } from 'app/utils';
+import { useAppDispatch } from 'data/hooks';
+import { LoginValues, login as loginThunk } from 'data/reducers/auth.reducer';
+
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
@@ -14,11 +17,11 @@ const yupSync = [
 ];
 
 const Login = () => {
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const login = () => {
-    navigate(profilePath);
+  const login = async (values: LoginValues) => {
+    await dispatch(loginThunk(values));
   };
 
   return (
