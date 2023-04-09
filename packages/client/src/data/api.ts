@@ -7,7 +7,6 @@ export class API {
 
   constructor(store: Store, config: AxiosRequestConfig) {
     this.axios = axios.create(config);
-    console.log(config);
     this.store = store;
   }
 

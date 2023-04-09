@@ -6,6 +6,5 @@ export const register = async (body: UserBody) => {
   const em = RequestContext.getEntityManager();
   const user = em.create(User, body);
   await em.persistAndFlush(user);
-
   return user;
 };

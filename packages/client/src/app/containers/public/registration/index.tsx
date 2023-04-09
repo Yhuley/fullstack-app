@@ -1,20 +1,26 @@
 import { Col, Row, Image, Input, Form, Button, Typography } from 'antd';
-import { loginPath, profilePath } from 'app/utils';
+import { loginPath, registerSchema } from 'app/utils';
 import { useAppDispatch } from 'data';
-import { register as registerThunk } from 'data/reducers/auth.reducer';
+import { register as registerThunk, RegisterValues } from 'data/reducers/auth.reducer';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
+const yupSync = [
+  {
+    async validator({ field }: { field: string }, value: string) {
+      await registerSchema.validateSyncAt(field, { [field]: value });
+    },
+  },
+];
+
 const Registration = () => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const register = () => {
-    dispatch(registerThunk());
-    // navigate(profilePath);
+  const register = async (values: RegisterValues) => {
+    dispatch(registerThunk(values));
   };
 
   return (
@@ -24,25 +30,13 @@ const Registration = () => {
           <Col xs={20} md={12} lg={16}>
             <Title>Register</Title>
             <Form onFinish={register} layout="vertical" requiredMark={false} size="large">
-              <Form.Item
-                name="name"
-                label="Name"
-                rules={[{ required: true, message: 'Please input your name!', type: 'string' }]}
-              >
+              <Form.Item name="name" label="Name" rules={yupSync}>
                 <Input placeholder="Name" />
               </Form.Item>
-              <Form.Item
-                name="email"
-                label="Email"
-                rules={[{ required: true, message: 'Please input your email!', type: 'email' }]}
-              >
+              <Form.Item name="email" label="Email" rules={yupSync}>
                 <Input placeholder="Email" />
               </Form.Item>
-              <Form.Item
-                label="Password"
-                name="password"
-                rules={[{ required: true, message: 'Please input your Password!' }]}
-              >
+              <Form.Item label="Password" name="password" rules={yupSync}>
                 <Input.Password
                   visibilityToggle={{ visible: passwordVisible, onVisibleChange: setPasswordVisible }}
                   placeholder="Password"

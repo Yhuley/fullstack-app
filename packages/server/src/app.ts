@@ -7,6 +7,7 @@ import 'express-async-errors';
 import ormConfig from './orm.config';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import { MikroORM, RequestContext } from '@mikro-orm/core';
+import config from './config';
 
 export class App {
   host: Application;
@@ -85,8 +86,8 @@ export class App {
   }
 
   listen() {
-    this.host.listen(4000, () => {
-      console.info(`🚀 http://localhost:4000`);
+    this.host.listen(config.port || 4001, () => {
+      console.info(`🚀 http://localhost:${config.port || 4001}`);
       console.info(`========================`);
     });
   }

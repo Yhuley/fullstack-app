@@ -16,3 +16,14 @@ export const loginSchema = yup.object().shape({
     .min(8, 'Min. 8 char')
     .required('Required'),
 });
+
+export const registerSchema = yup.object().shape({
+  email: emailValidation.required('Required'),
+  password: yup
+    .string()
+    .trim('password cannot include leading and trailing spaces')
+    .strict(true)
+    .min(8, 'Min. 8 char')
+    .required('Required'),
+  name: yup.string().min(2, 'Too short').max(55, 'Too long'),
+});

@@ -1,7 +1,5 @@
 import { Col, Row, Image, Input, Form, Button, Typography } from 'antd';
 import { loginSchema, profilePath, registrationPath } from 'app/utils';
-import { useAppDispatch } from 'data';
-import { login as loginReducer } from 'data/reducers/auth.reducer';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -17,11 +15,9 @@ const yupSync = [
 
 const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const login = () => {
-    dispatch(loginReducer());
     navigate(profilePath);
   };
 

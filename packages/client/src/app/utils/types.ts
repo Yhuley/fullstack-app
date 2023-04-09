@@ -11,3 +11,10 @@ export interface IThunkType {
   state: RootState;
   extra: ThunkExtraArguments;
 }
+
+export enum ReducerStatus {
+  idle = 'idle',
+  pending = 'pending',
+  success = 'success',
+  failed = 'failed',
+}
