@@ -9,10 +9,13 @@ const initialState: AuthState = {
   isLoggedIn: false,
 };
 
-export const loginThunk = createAsyncThunk<null, any, IThunkType>('auth/login', async (values, { extra: { api } }) => {
-  api.get('/');
-  return null;
-});
+export const register = createAsyncThunk<null, undefined, IThunkType>(
+  'auth/register',
+  async (values, { extra: { api } }) => {
+    await api.post('/auth/register', { name: 'Ivan' });
+    return null;
+  },
+);
 
 export const slice = createSlice({
   name: 'auth',

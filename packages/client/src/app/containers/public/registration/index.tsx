@@ -1,7 +1,7 @@
 import { Col, Row, Image, Input, Form, Button, Typography } from 'antd';
 import { loginPath, profilePath } from 'app/utils';
 import { useAppDispatch } from 'data';
-import { login as loginReducer } from 'data/reducers/auth.reducer';
+import { register as registerThunk } from 'data/reducers/auth.reducer';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -12,9 +12,9 @@ const Registration = () => {
   const dispatch = useAppDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const login = () => {
-    dispatch(loginReducer());
-    navigate(profilePath);
+  const register = () => {
+    dispatch(registerThunk());
+    // navigate(profilePath);
   };
 
   return (
@@ -23,11 +23,11 @@ const Registration = () => {
         <Row align="middle" justify="center" style={{ height: '100%' }}>
           <Col xs={20} md={12} lg={16}>
             <Title>Register</Title>
-            <Form onFinish={login} layout="vertical" requiredMark={false} size="large">
+            <Form onFinish={register} layout="vertical" requiredMark={false} size="large">
               <Form.Item
                 name="name"
                 label="Name"
-                rules={[{ required: true, message: 'Please input your name!', type: 'email' }]}
+                rules={[{ required: true, message: 'Please input your name!', type: 'string' }]}
               >
                 <Input placeholder="Name" />
               </Form.Item>
